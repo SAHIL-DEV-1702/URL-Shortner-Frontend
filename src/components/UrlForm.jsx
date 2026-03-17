@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios'
+import { createShortUrl } from '../api/shortUrl.api';
 import { useRef } from "react";
+
 
 
 const UrlForm = () => {
@@ -10,10 +11,12 @@ const UrlForm = () => {
     const [url, setUrl] = useState('')
     const [shortenedUrl, setShortenedUrl] = useState('')
 
+
+
     const handleShorten = async () => {
 
-        const { data } = await axios.post('http://localhost:8000/api/create/', { url })
-        setShortenedUrl(data)
+        let Surl = await createShortUrl(url)
+        setShortenedUrl(Surl)
 
     }
 
@@ -21,7 +24,7 @@ const UrlForm = () => {
         urlRef.current.select(); // select text
         navigator.clipboard.writeText(urlRef.current.value); // copy
     };
- 
+
 
     return (
         <>
@@ -41,7 +44,7 @@ const UrlForm = () => {
                     type="submit"
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition duration-200"
                 >
-                    Shorten URL
+                    Shorten URL.
                 </button>
             </div>
 
@@ -63,7 +66,7 @@ const UrlForm = () => {
                         >
                             Copy
                         </button>
-                      
+
                     </div>
                 </div>
             )}
