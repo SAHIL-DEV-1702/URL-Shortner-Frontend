@@ -1,4 +1,6 @@
+
 import UrlForm from "../components/UrlForm"
+import AuthPage from "./Authpage"
 
 const HomePage = () => {
 
@@ -10,9 +12,11 @@ const HomePage = () => {
                 <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
                     URL Shortener
                 </h1>
-                <UrlForm />
 
                 
+                <UrlForm />
+
+
             </div>
         </div>
 

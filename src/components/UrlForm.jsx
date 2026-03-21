@@ -25,7 +25,7 @@ const UrlForm = () => {
         navigator.clipboard.writeText(urlRef.current.value); // copy
     };
 
-
+    console.log(shortenedUrl)
     return (
         <>
             <div className="space-y-4">
@@ -44,7 +44,7 @@ const UrlForm = () => {
                     type="submit"
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition duration-200"
                 >
-                    Shorten URL.
+                    Shorten URL
                 </button>
             </div>
 
@@ -53,6 +53,7 @@ const UrlForm = () => {
                     <p className="text-sm text-gray-600 mb-2">Shortened URL:</p>
 
                     <div className="flex gap-3">
+
                         <input
                             ref={urlRef}
                             value={shortenedUrl}
