@@ -1,24 +1,32 @@
 
-import axios from 'axios'
+import { useSelector } from 'react-redux'
+import axiosInstance from '../utils/axiosInstance'
 import { useState } from 'react'
-
+import loginUser from './'
 const LoginForm = ({ state }) => {
 
     const handleLogin = async () => {
 
         try {
-            const data = await axios.post('http://localhost:8000/api/auth/login', {
-                email: email, password: password
-            })
+            const data  = await loginUser(password, email);
             console.log(data)
+            setLoading(false)
+            console.log('singIn Sucess')
+            await axiosInstance.post('/api/auth/login', {
+                email,
+                password
+            })
+
         } catch (error) {
-            console.log(error)
+            console.log(error.message, "21 loginForm")
         }
 
     }
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const auth = useSelector((state) => state.auth)
+    console.log(auth)
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -66,14 +74,14 @@ const LoginForm = ({ state }) => {
 
                 <button
                     type="submit"
-                    className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-200"
+                    className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-200 active:scale-95"
                     onClick={handleLogin}
                 >
                     Login
                 </button>
 
                 <p className="text-center text-sm text-gray-600 mt-4">
-                    Don't have an account? <span className="text-purple-600 cursor-pointer" onClick={() => state(false)} > Register User </span>
+                    Don't have an account? <span className="text-purple-600 cursor-pointer" onClick={() => state(false)}  > Register User </span>
                 </p>
             </div>
         </div>
