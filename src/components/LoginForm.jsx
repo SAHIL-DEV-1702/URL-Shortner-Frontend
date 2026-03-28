@@ -1,14 +1,15 @@
 
 import { useSelector } from 'react-redux'
-import axiosInstance from '../utils/axiosInstance'
+import axiosInstance from '../utils/axiosInstance.js'
 import { useState } from 'react'
-import loginUser from './'
+import { loginUser } from '../api/user.api.js';
+
 const LoginForm = ({ state }) => {
 
     const handleLogin = async () => {
 
         try {
-            const data  = await loginUser(password, email);
+            const data = await loginUser(email, password);
             console.log(data)
             setLoading(false)
             console.log('singIn Sucess')
