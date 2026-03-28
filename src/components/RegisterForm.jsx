@@ -7,13 +7,13 @@ const RegisterForm = ({ state }) => {
 
     const [pass, setPass] = useState("")
     const [email, setEmail] = useState("")
-
+    const [name, setName] = useState("")
 
     const handleSubmit = async () => {
 
         try {
             const response = await axios.post("http://localhost:8000/api/auth/register", {
-                email: email, password: pass
+                name: name, email: email, password: pass
             });
 
             console.log(response.data);
@@ -27,6 +27,9 @@ const RegisterForm = ({ state }) => {
     }
     const handelEmail = (e) => {
         setEmail(e.target.value)
+    }
+    const handelName = (e) => {
+        setName(e.target.value)
     }
 
     return (
@@ -45,6 +48,7 @@ const RegisterForm = ({ state }) => {
                         className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
                         placeholder="Enter your name"
                         required
+                        onClick={handelName}
                     />
                 </div>
                 <div className="mb-4">

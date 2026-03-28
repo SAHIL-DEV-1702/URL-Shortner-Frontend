@@ -14,12 +14,15 @@ const LoginForm = ({ state }) => {
             setLoading(false)
             console.log('singIn Sucess')
             await axiosInstance.post('/api/auth/login', {
+                
                 email,
                 password
             })
 
         } catch (error) {
             console.log(error.message, "21 loginForm")
+            console.log(error.response?.data)
+            console.log(error.response?.status)
         }
 
     }
@@ -27,6 +30,7 @@ const LoginForm = ({ state }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const auth = useSelector((state) => state.auth)
+    const [loading, setLoading] = useState(false)
     console.log(auth)
 
     const handleEmail = (e) => {
