@@ -14,7 +14,7 @@ const LoginForm = ({ state }) => {
             setLoading(false)
             console.log('singIn Sucess')
             await axiosInstance.post('/api/auth/login', {
-                
+
                 email,
                 password
             })
@@ -31,6 +31,7 @@ const LoginForm = ({ state }) => {
     const [password, setPassword] = useState("")
     const auth = useSelector((state) => state.auth)
     const [loading, setLoading] = useState(false)
+
     console.log(auth)
 
     const handleEmail = (e) => {
