@@ -48,7 +48,7 @@ const RegisterForm = ({ state }) => {
                         className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
                         placeholder="Enter your name"
                         required
-                        onClick={handelName}
+                        onChange={handelName}
                     />
                 </div>
                 <div className="mb-4">
