@@ -1,14 +1,22 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
+import UrlForm from '../components/UrlForm'
 
 const DashBoardPage = () => {
     return (
         <>
+            <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+                <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
 
-            <div className=" bg-blue-400 h-screen flex items-center justify-center">
+                    <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
+                        URL Shortener
+                    </h1>
 
-                <div className=' animate-[move_0.5s_ease-in-out_infinite_alternate h-80 w-full bg-linear-to-r from-purple-500 to-blue-500 text-5xl font-extrabold border-2'> <marquee className="h-full w-full" behavior="alternate" direction="left"  >DashBoardPage</marquee></div>
 
+                    <UrlForm />
+
+
+                </div>
             </div>
         </>
     )

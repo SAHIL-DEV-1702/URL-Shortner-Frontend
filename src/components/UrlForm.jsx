@@ -16,7 +16,9 @@ const UrlForm = () => {
     const handleShorten = async () => {
 
         let Surl = await createShortUrl(url)
-        setShortenedUrl(Surl)
+        console.log(Surl, "shortened url")
+        setShortenedUrl(Surl.
+            shortUrl)
 
     }
 
