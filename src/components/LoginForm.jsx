@@ -1,18 +1,27 @@
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axiosInstance from '../utils/axiosInstance.js'
 import { useState } from 'react'
 import { loginUser } from '../api/user.api.js';
+import { login } from '../store/slice/authSlice.js';
+import { Navigate, useNavigate } from '@tanstack/react-router';
+
+
 
 const LoginForm = ({ state }) => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
 
         try {
             const data = await loginUser(email, password);
-            console.log(data)
-            setLoading(false)
-            console.log('singIn Sucess')
+
+            dispatch(login(data.user))
+            setLoading(true)
+            navigate({ to: "/dashboard" })  // redirect kela
+            console.log('login Sucess', "15,loginUser.jsx")
             await axiosInstance.post('/api/auth/login', {
 
                 email,

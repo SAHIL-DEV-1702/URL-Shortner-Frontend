@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 const NavBar = ({ isLoggedIn, onLogout }) => {
     return (
-        <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-4 flex items-center justify-between shadow-md z-50">
+        <nav className="fixed top-0 left-0 w-full bg-linear-to-r from-purple-500 to-blue-500 text-white px-6 py-4 flex items-center justify-between shadow-md z-50">
 
             {/* Left side: Logo / Brand */}
             <div className="text-xl font-bold text-white">
