@@ -1,15 +1,21 @@
 import { Link } from '@tanstack/react-router'
 
 const NavBar = ({ isLoggedIn, onLogout }) => {
+
+
+
+
+  
+
     return (
         <nav className="fixed top-0 left-0 w-full bg-linear-to-r from-purple-500 to-blue-500 text-white px-6 py-4 flex items-center justify-between shadow-md z-50">
 
-            {/* Left side: Logo / Brand */}
+       
             <div className="text-xl font-bold text-white">
                 <Link to="/">URL Shortener</Link>
             </div>
 
-            {/* Middle / Center: Links */}
+           
             <div className="hidden md:flex space-x-4">
                 <Link to="/" className="hover:text-gray-200 font-medium">
                     Home
@@ -19,7 +25,6 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
                 </Link>
             </div>
 
-            {/* Right side: Auth button */}
             <div>
                 {isLoggedIn ? (
                     <button

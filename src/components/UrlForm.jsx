@@ -2,16 +2,17 @@ import React from 'react'
 import { useState } from 'react'
 import { createShortUrl } from '../api/shortUrl.api';
 import { useRef } from "react";
-
-
+import { useSelector } from 'react-redux';
+import UserUrls from './UserUrls';
 
 const UrlForm = () => {
 
     const urlRef = useRef(null);
     const [url, setUrl] = useState('')
     const [shortenedUrl, setShortenedUrl] = useState('')
+    const [customSlug, setCustomSlug] = useState('')
 
-
+    const isAuthenticated = useSelector((state) => state.auth);
 
     const handleShorten = async () => {
 
@@ -49,6 +50,32 @@ const UrlForm = () => {
                     Shorten URL
                 </button>
             </div>
+
+            {isAuthenticated && (
+                <>
+                    {/* 🔹 Top Section (Form Area) */}
+                    <div className="max-w-xl mx-auto mt-6">
+
+                        <div className="mt-4">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Custom URL :
+                            </label>
+
+                            <input
+                                type="text"
+                                value={customSlug}
+                                onChange={(e) => setCustomSlug(e.target.value)}
+                                placeholder="Enter custom slug"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md 
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            />
+                        </div>
+
+                    </div>
+
+                </>
+
+            )}
 
             {shortenedUrl && (
                 <div className="mt-6 p-4 bg-gray-50 rounded-lg">

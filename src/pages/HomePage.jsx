@@ -6,20 +6,32 @@ const HomePage = () => {
 
 
     return (
-        <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+        <>
+            <div>
 
-                <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
+                <h1 className="text-3xl font-bold text-center text-gray-800 mb-5 ">
                     URL Shortener
                 </h1>
 
-
-                <UrlForm />
-
+                <div className="overflow-hidden rounded bg-black py-4 shadow-xl">
+                    <marquee behavior="scroll" direction="right">
+                        <div className="flex animate-marquee hover:[animation-play-state:paused]">
+                            <p className=" text-center mx-6 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400">
+                                🚀 Create Short URLs instantly
+                            </p>
+                            <p className="text-center mx-6 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-400">
+                                🔥 Fast • Secure • Reliable
+                            </p>
+                            <p className="text-center mx-6 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-red-400 to-yellow-400">
+                                💡 Try it now & boost your workflow
+                            </p>
+                        </div>
+                    </marquee >
+                </div>
 
             </div>
-        </div>
 
+        </>
     )
 }
 

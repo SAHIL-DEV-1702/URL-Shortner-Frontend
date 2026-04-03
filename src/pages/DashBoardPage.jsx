@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 import UrlForm from '../components/UrlForm'
+import UserUrls from '../components/UserUrls'
 
 const DashBoardPage = () => {
     return (
@@ -14,9 +15,9 @@ const DashBoardPage = () => {
 
 
                     <UrlForm />
-
-
+                    <UserUrls />
                 </div>
+
             </div>
         </>
     )
