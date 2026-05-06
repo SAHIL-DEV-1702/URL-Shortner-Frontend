@@ -1,5 +1,5 @@
 
-import axiosInstance from "../utils/axiosInstance"
+import axiosInstance from "../utils/axiosInstance.js"
 
 export const createShortUrl = async (url) => {
 

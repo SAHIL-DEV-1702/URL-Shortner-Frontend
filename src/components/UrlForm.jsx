@@ -12,16 +12,19 @@ const UrlForm = () => {
     const [shortenedUrl, setShortenedUrl] = useState('')
     const [customSlug, setCustomSlug] = useState('')
 
-    const isAuthenticated = useSelector((state) => state.auth);
+    const { isAuthenticated } = useSelector((state) => state.auth);
 
     const handleShorten = async () => {
 
-        let Surl = await createShortUrl(url)
-        console.log(Surl, "shortened url")
-        setShortenedUrl(Surl.
-            shortUrl)
-
+        try {
+            const Surl = await createShortUrl(url)
+            setShortenedUrl(Surl?.shortUrl || "")
+        } catch (err) {
+            console.log(err)
+        }
     }
+
+
 
     const handleCopy = () => {
         urlRef.current.select(); // select text
@@ -53,7 +56,7 @@ const UrlForm = () => {
 
             {isAuthenticated && (
                 <>
-                    {/* 🔹 Top Section (Form Area) */}
+
                     <div className="max-w-xl mx-auto mt-6">
 
                         <div className="mt-4">

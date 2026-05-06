@@ -5,14 +5,19 @@ import { getAllUser } from '../api/user.api'
 
 const UserUrls = () => {
 
-    const { data: urls, isLoading, isError, error } = useQuery({
+    const { data: urlsData, isLoading, isError, error } = useQuery({
         queryKey: ['userUrls'],
         queryFn: getAllUser,
         refetchInterval: 30000,
         staleTime: 0,
     })
 
+    console.log(urlsData, "user urlsData (should be full API response)")
+    const urls = urlsData?.urls || urlsData || [];
+
     console.log(urls, "user urls") // undefined ahe 
+    console.log(urls)
+    console.log(urls?.data)
 
     const [copyId, setCopyId] = useState('')
 
@@ -35,11 +40,12 @@ const UserUrls = () => {
     }
 
     if (!urls || urls.length === 0) {
-        return <div className="text-center text-gray-500 mt-4">No URLs found. Start by creating a new short URL!</div>
+        return <div className="text-center text-gray-500 mt-4">No URLs found. Start by creating a new short URL!<br />Debug: {JSON.stringify(urlsData)}</div>
     }
     return (
         <div className="space-y-4 mt-4">
             {urls.map((item) => (
+
                 <div
 
                     key={item._id}
@@ -48,12 +54,12 @@ const UserUrls = () => {
                     <div className="md:hidden space-y-2">
                         <div>
                             <p className="text-xs text-gray-400">Short URL</p>
-                            <p className="text-indigo-600 font-semibold">{item.shortUrl}</p>
+                            <p className="text-indigo-600 font-semibold">{item.short_url}</p>
                         </div>
 
                         <div>
                             <p className="text-xs text-gray-400">Original URL</p>
-                            <p className="text-gray-500 break-all">{item.longUrl}</p>
+                            <p className="text-gray-500 break-all">{item.originalUrl}</p>
                         </div>
 
                         <div className="flex justify-between text-sm text-gray-400">
@@ -62,7 +68,7 @@ const UserUrls = () => {
                         </div>
 
                         <div className="flex gap-2 pt-2">
-                            <button className="flex-1 text-sm px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                            <button className="flex-1 text-sm px-2 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700">
                                 Copy
                             </button>
 
@@ -70,28 +76,29 @@ const UserUrls = () => {
                     </div>
 
                     <div className="hidden md:grid grid-cols-5 gap-4 items-center">
-                        <div className="text-indigo-600 font-semibold">
-                            {item.shortUrl}
+                        <div className="text-indigo-600 font-semibold w-60">
+                            {item.short_url}
+
                         </div>
 
-                        <div className="col-span-2 text-gray-500 truncate">
-                            {item.longUrl}
+                        <div className="w-140 m-3 text-gray-500 truncate">
+                            {item.originalUrl}
                         </div>
 
                         <div className="text-gray-400 text-sm">
                             {item.date}
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="items-center gap-4">
                             <span className="text-gray-700 font-medium">
                                 {item.clicks}
                             </span>
 
-                            <button className="text-sm px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700" >
+                            <button className="text-sm m-1 py-1 px-1 bg-indigo-600 text-white rounded hover:bg-indigo-700" onClick={() => handleCopy(item.originalUrl, item._id)} >
                                 Copy
                             </button>
 
-                            <button className="text-sm px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                            <button className="text-sm m-1 py-1 px-1 bg-red-500 text-white rounded hover:bg-red-600">
                                 Delete
                             </button>
                         </div>

@@ -1,41 +1,63 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+
+import { useDispatch } from 'react-redux'
+import { login } from '../store/slice/authSlice.js'
+import { useNavigate } from '@tanstack/react-router'
+import { registerUser } from '../api/user.api.js'
 
 const RegisterForm = ({ state }) => {
 
-
-
-    const [pass, setPass] = useState("")
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [password, setPass] = useState("")
     const [email, setEmail] = useState("")
     const [name, setName] = useState("")
+    const [loading, setLoading] = useState(false)
 
-    const handleSubmit = async () => {
 
-        try {
-            const response = await axios.post("http://localhost:8000/api/auth/register", {
-                name: name, email: email, password: pass
-            });
-
-            console.log(response.data);
-        } catch (error) {
-            console.log(error.response?.data || error.message);
-        }
-
-    }
     const handelPassword = (e) => {
         setPass(e.target.value)
     }
+
     const handelEmail = (e) => {
         setEmail(e.target.value)
     }
+
     const handelName = (e) => {
         setName(e.target.value)
     }
 
+    const handelSubmit = async () => {
+
+        
+        setLoading(true)
+
+        try {
+
+            const data = await registerUser(name, email, password);
+
+            setLoading(false)
+
+            console.log(data, "user data for save after login");
+
+            dispatch(login(data.user))
+            navigate({ to: "/dashboard" })
+            setLoading(false)// redirect kela
+            console.log('Register Sucess Redirecting To Dashboard')
+            console.log(data.user, "user data after login");
+        }
+        catch (error) {
+            setLoading(false)
+            console.log(error.response?.data || error.message);
+        }
+
+    }
+
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-blue-100 to-purple-200">
 
-            <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-blue-100" onClick={() => handleSubmit}>
+            <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-blue-100" >
 
                 <h2 className="text-3xl font-extrabold mb-6 text-center text-purple-700">Create Account</h2>
                 <div className="mb-4">
@@ -72,15 +94,15 @@ const RegisterForm = ({ state }) => {
                         className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
                         placeholder="Password must be 8 charater"
                         required
-                        value={pass}
+                        value={password}
                         onChange={handelPassword}
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-200"
-                    onClick={handleSubmit}
+                    className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-200 active:scale-95"
+                    onClick={() => handelSubmit()}
                 >
                     Register
                 </button>

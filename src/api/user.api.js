@@ -1,5 +1,5 @@
 
-import axiosInstance from "../utils/axiosInstance"
+import axiosInstance from "../utils/axiosInstance.js"
 
 export const loginUser = async (email, password) => {
 
@@ -17,7 +17,7 @@ export const registerUser = async (name, email, password) => {
 
 export const logoutUser = async () => {
 
-    await axiosInstance.get("/api/auth/logout")
+    await axiosInstance.post("/api/auth/logout")
 
 }
 
@@ -29,7 +29,9 @@ export const getCurrentUser = async () => {
 export const getAllUser = async () => {
 
     const { data } = await axiosInstance.get("/api/user/url")
-    console.log(data.urls, "axios data")
-    return data.urls
+    console.log(data, "axios data user api 32")
+    console.log(data, "axios data user api 32 (FULL RESPONSE)")
+    // Return full data for debugging
+    return data
 
 }

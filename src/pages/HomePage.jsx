@@ -1,6 +1,7 @@
 
+
 import UrlForm from "../components/UrlForm"
-import AuthPage from "./Authpage"
+import AuthPage from "./AuthPage"
 
 const HomePage = () => {
 
@@ -13,7 +14,7 @@ const HomePage = () => {
                     URL Shortener
                 </h1>
 
-                <div className="overflow-hidden rounded bg-black py-4 shadow-xl">
+                <div className="overflow-hidden rounded bg-black py-4 shadow-xl mt-[4%]">
                     <marquee behavior="scroll" direction="right">
                         <div className="flex animate-marquee hover:[animation-play-state:paused]">
                             <p className=" text-center mx-6 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400">

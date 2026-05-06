@@ -1,10 +1,9 @@
 
 import { useDispatch, useSelector } from 'react-redux'
-import axiosInstance from '../utils/axiosInstance.js'
 import { useState } from 'react'
 import { loginUser } from '../api/user.api.js';
 import { login } from '../store/slice/authSlice.js';
-import { Navigate, useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 
 
 
@@ -22,11 +21,7 @@ const LoginForm = ({ state }) => {
             setLoading(true)
             navigate({ to: "/dashboard" })  // redirect kela
             console.log('login Sucess', "15,loginUser.jsx")
-            await axiosInstance.post('/api/auth/login', {
 
-                email,
-                password
-            })
 
         } catch (error) {
             console.log(error.message, "21 loginForm")
@@ -41,7 +36,7 @@ const LoginForm = ({ state }) => {
     const auth = useSelector((state) => state.auth)
     const [loading, setLoading] = useState(false)
 
-    console.log(auth)
+    console.log(auth, "auth value here login form")
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
