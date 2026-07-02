@@ -43,13 +43,14 @@ const UserUrls = () => {
         return <div className="text-center text-gray-500 mt-4">No URLs found. Start by creating a new short URL!<br />Debug: {JSON.stringify(urlsData)}</div>
     }
     return (
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-4 py-5 border-2 border-amber-200">
             {urls.map((item) => (
 
                 <div
 
                     key={item._id}
                     className="bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition">
+
 
                     <div className="md:hidden space-y-2">
                         <div>
@@ -90,6 +91,7 @@ const UserUrls = () => {
                         </div>
 
                         <div className="items-center gap-4">
+
                             <span className="text-gray-700 font-medium">
                                 {item.clicks}
                             </span>
@@ -101,11 +103,14 @@ const UserUrls = () => {
                             <button className="text-sm m-1 py-1 px-1 bg-red-500 text-white rounded hover:bg-red-600">
                                 Delete
                             </button>
+
                         </div>
+
                     </div>
                 </div>
             ))}
         </div>
+
     );
 };
 

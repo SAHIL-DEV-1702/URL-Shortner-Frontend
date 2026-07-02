@@ -15,9 +15,8 @@ const UrlForm = () => {
     const { isAuthenticated } = useSelector((state) => state.auth);
 
     const handleShorten = async () => {
-
         try {
-            const Surl = await createShortUrl(url)
+            const Surl = await createShortUrl({ url, slug: customSlug })
             setShortenedUrl(Surl?.shortUrl || "")
         } catch (err) {
             console.log(err)
