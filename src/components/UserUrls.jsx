@@ -28,9 +28,10 @@ const UserUrls = () => {
     console.log(urls?.data)
 
     const [copyId, setCopyId] = useState('')
+    const baseUrl = import.meta.env.VITE_APP_URL || 'http://localhost:8000'
 
-    const handleCopy = (url, id) => {
-        navigator.clipboard.writeText(url)
+    const handleCopy = (shortUrl, id) => {
+        navigator.clipboard.writeText(shortUrl)
         setCopyId(id)
         setTimeout(() => {
             setCopyId('')
@@ -90,8 +91,9 @@ const UserUrls = () => {
 
                     <div className="hidden md:grid grid-cols-5 gap-4 items-center">
                         <div className="text-indigo-600 font-semibold w-60">
-                            {item.short_url}
-
+                            <a href={`${baseUrl}/${item.short_url}`} target="_blank" rel="noreferrer" className="hover:underline break-words">
+                                {item.short_url}
+                            </a>
                         </div>
 
                         <div className="w-140 m-3 text-gray-500 truncate">
@@ -108,7 +110,7 @@ const UserUrls = () => {
                                 {item.clicks}
                             </span>
 
-                            <button className="text-sm m-1 py-1 px-1 bg-indigo-600 text-white rounded hover:bg-indigo-700" onClick={() => handleCopy(item.originalUrl, item._id)} >
+                            <button className="text-sm m-1 py-1 px-1 bg-indigo-600 text-white rounded hover:bg-indigo-700" onClick={() => handleCopy(`${baseUrl}/${item.short_url}`, item._id)} >
                                 Copy
                             </button>
 
