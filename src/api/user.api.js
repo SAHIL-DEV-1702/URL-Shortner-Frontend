@@ -31,7 +31,10 @@ export const getAllUser = async () => {
     const { data } = await axiosInstance.get("/api/user/url")
     console.log(data, "axios data user api 32")
     console.log(data, "axios data user api 32 (FULL RESPONSE)")
-    // Return full data for debugging
     return data
+}
 
+export const deleteUserUrl = async (id) => {
+    const { data } = await axiosInstance.delete(`/api/user/url/${id}`)
+    return data
 }

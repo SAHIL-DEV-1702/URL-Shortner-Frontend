@@ -1,15 +1,23 @@
 
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { getAllUser } from '../api/user.api'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { getAllUser, deleteUserUrl } from '../api/user.api'
 
 const UserUrls = () => {
+    const queryClient = useQueryClient()
 
     const { data: urlsData, isLoading, isError, error } = useQuery({
         queryKey: ['userUrls'],
         queryFn: getAllUser,
         refetchInterval: 30000,
         staleTime: 0,
+    })
+
+    const deleteMutation = useMutation({
+        mutationFn: deleteUserUrl,
+        onSuccess: () => {
+            queryClient.invalidateQueries(['userUrls'])
+        }
     })
 
     console.log(urlsData, "user urlsData (should be full API response)")
@@ -27,6 +35,10 @@ const UserUrls = () => {
         setTimeout(() => {
             setCopyId('')
         }, 2000)
+    }
+
+    const handleDelete = (id) => {
+        deleteMutation.mutate(id)
     }
 
     if (isLoading) {
@@ -100,8 +112,8 @@ const UserUrls = () => {
                                 Copy
                             </button>
 
-                            <button className="text-sm m-1 py-1 px-1 bg-red-500 text-white rounded hover:bg-red-600">
-                                Delete
+                            <button className="text-sm m-1 py-1 px-1 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleDelete(item._id)}>
+                                {deleteMutation.isLoading ? 'Deleting...' : 'Delete'}
                             </button>
 
                         </div>
