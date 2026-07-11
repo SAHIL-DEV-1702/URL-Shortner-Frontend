@@ -29,7 +29,7 @@ const HomePage = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="rounded-4xl bg-gradient-to-br from-purple-500/10 via-blue-400/10 to-sky-500/10 p-8 shadow-lg shadow-slate-900/10 dark:from-slate-700/20 dark:via-slate-800/20 dark:to-slate-900/30">
+                    <div className="rounded-4xl bg-linear-to-br from-purple-500/10 via-blue-400/10 to-sky-500/10 p-8 shadow-lg shadow-slate-900/10 dark:from-slate-700/20 dark:via-slate-800/20 dark:to-slate-900/30">
                         <div className="rounded-4xl border border-white/80 bg-(--bg) p-8 shadow-sm dark:border-slate-700/60 dark:bg-slate-950/95">
                             <p className="text-sm font-semibold uppercase tracking-[0.26em] text-(--accent-strong)">Fast links</p>
                             <h2 className="mt-4 text-3xl font-semibold text-(--text)">One-click link creation</h2>
