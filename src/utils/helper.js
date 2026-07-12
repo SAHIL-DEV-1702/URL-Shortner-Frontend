@@ -23,7 +23,7 @@ export const checkAuth = async ({ context }) => {
         return true
 
     } catch (error) {
-
+        console.log(error)
         redirect({ to: "/auth" })
     }
 }
