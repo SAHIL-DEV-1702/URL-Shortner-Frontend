@@ -41,8 +41,8 @@ const RegisterForm = ({ state }) => {
             console.log(data, "user data for save after login");
 
             dispatch(login(data.user))
-            navigate({ to: "/dashboard" })
-            setLoading(false)// redirect kela
+            navigate({ to: "/dashboard", replace: true })
+            setLoading(false)
             console.log('Register Sucess Redirecting To Dashboard')
             console.log(data.user, "user data after login");
         }

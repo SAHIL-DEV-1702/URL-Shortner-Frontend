@@ -5,6 +5,11 @@ import { login } from '../store/slice/authSlice.js'
 export const checkAuth = async ({ context }) => {
     try {
         const { queryClient, store } = context
+        const authState = store.getState().auth
+
+        if (authState?.isAuthenticated && authState?.user) {
+            return true
+        }
 
         const user = await queryClient.ensureQueryData({
             queryKey: ['currentUser'],

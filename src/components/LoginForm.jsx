@@ -32,7 +32,7 @@ const LoginForm = ({ state }) => {
             const data = await loginUser(email, password);
 
             dispatch(login(data.user))
-            navigate({ to: "/dashboard" })  // redirect kela
+            navigate({ to: "/dashboard", replace: true })
             console.log('login Sucess', "15,loginUser.jsx")
 
 
