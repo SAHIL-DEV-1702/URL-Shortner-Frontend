@@ -1,12 +1,11 @@
 import axios from 'axios'
 
-export const SHORT_URL_BASE_URL = 'https://url-shortner-backend-1-7ems.onrender.com'
+export const SHORT_URL_BASE_URL = 'https://url-shortner-backend-1-7ems.onrender.com';
 
 const axiosInstance = axios.create({
-    baseUrl: SHORT_URL_BASE_URL,
+    baseURL: SHORT_URL_BASE_URL,
     timeout: 10000,
     withCredentials: true,
-
 });
 
 export default axiosInstance;
