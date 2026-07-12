@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { createShortUrl } from '../api/shortUrl.api'
+import { formatShortUrl } from '../utils/axiosInstance'
 
 const UrlForm = () => {
     const urlRef = useRef(null)
@@ -24,8 +25,8 @@ const UrlForm = () => {
 
         try {
             const response = await createShortUrl({ url, slug: customSlug })
-            const shortUrl = response?.shortUrl || response?.short_url || response?.data?.shortUrl || response?.data?.short_url || ''
-            setShortenedUrl(shortUrl)
+            const shortUrl = response?.shortUrl || response?.short_url || response?.data?.shortUrl || response?.data?.short_url || response?.slug || response?.data?.slug || ''
+            setShortenedUrl(formatShortUrl(shortUrl))
         } catch (err) {
             setErrorMessage(err?.response?.data?.message || err?.message || 'Unable to shorten URL. Please try again.')
             setShortenedUrl('')

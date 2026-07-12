@@ -14,6 +14,7 @@ const RegisterForm = ({ state }) => {
     const [name, setName] = useState("")
     const [loading, setLoading] = useState(false)
 
+    
 
     const handelPassword = (e) => {
         setPass(e.target.value)
