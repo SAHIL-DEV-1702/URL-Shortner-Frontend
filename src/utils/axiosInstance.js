@@ -4,7 +4,7 @@ export const SHORT_URL_BASE_URL = 'https://url-shortner-backend-1-7ems.onrender.
 
 const axiosInstance = axios.create({
     baseURL: SHORT_URL_BASE_URL,
-    timeout: 70000,
+    timeout: 10000,
     withCredentials: true,
 });
 

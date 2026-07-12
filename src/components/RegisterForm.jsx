@@ -29,7 +29,7 @@ const RegisterForm = ({ state }) => {
 
     const handelSubmit = async () => {
 
-        
+
         setLoading(true)
 
         try {
