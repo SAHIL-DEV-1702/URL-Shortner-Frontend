@@ -21,7 +21,7 @@ const UserUrls = () => {
 
     const urls = urlsData?.urls || urlsData || []
     const [copyId, setCopyId] = useState('')
-    const baseUrl = import.meta.env.VITE_APP_URL || 'http://localhost:8000'
+    const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
     const handleCopy = (shortUrl, id) => {
         navigator.clipboard.writeText(shortUrl)
