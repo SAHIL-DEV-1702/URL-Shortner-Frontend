@@ -1,9 +1,8 @@
-import { redirect } from "@tanstack/react-router"
+import { redirect } from '@tanstack/react-router'
 import { getCurrentUser } from '../api/user.api.js'
 import { login } from '../store/slice/authSlice.js'
 
 export const checkAuth = async ({ context }) => {
-
     try {
         const { queryClient, store } = context
 
@@ -12,18 +11,13 @@ export const checkAuth = async ({ context }) => {
             queryFn: getCurrentUser,
         })
 
-        console.log(user, "user")
-
         if (!user) {
-            redirect({ to: "/auth" })
+            throw new Error('Not authenticated')
         }
 
         store.dispatch(login(user))
-
         return true
-
     } catch (error) {
-        console.log(error)
-        redirect({ to: "/auth" })
+        throw redirect({ to: '/auth' })
     }
 }
