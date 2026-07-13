@@ -14,7 +14,7 @@ const RegisterForm = ({ state }) => {
     const [name, setName] = useState("")
     const [loading, setLoading] = useState(false)
 
-    
+
 
     const handelPassword = (e) => {
         setPass(e.target.value)
@@ -36,6 +36,10 @@ const RegisterForm = ({ state }) => {
         try {
 
             const data = await registerUser(name, email, password);
+
+            if (data?.token) {
+                localStorage.setItem('accessToken', data.token)
+            }
 
             setLoading(false)
 

@@ -31,6 +31,10 @@ const LoginForm = ({ state }) => {
 
             const data = await loginUser(email, password);
 
+            if (data?.token) {
+                localStorage.setItem('accessToken', data.token)
+            }
+
             dispatch(login(data.user))
             navigate({ to: "/dashboard", replace: true })
             console.log('login Sucess', "15,loginUser.jsx")

@@ -16,6 +16,7 @@ const NavBar = () => {
     const handleLogOut = () => {
         axiosInstance.post('/api/auth/logout')
             .then(() => {
+                localStorage.removeItem('accessToken')
                 dispatch({ type: 'auth/logout' })
             })
     }
