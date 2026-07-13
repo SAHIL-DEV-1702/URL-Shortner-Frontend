@@ -23,15 +23,18 @@ export const formatShortUrl = (value) => {
 
     if (!rawValue) return ''
 
+    // strip accidental 'undefined/' prefixes produced by some backends
+    const cleaned = rawValue.replace(/^undefined\/+/i, '')
+
     if (/^https?:\/\//i.test(rawValue)) {
         return rawValue
     }
 
-    return `${resolveShortUrlBase()}/${rawValue.replace(/^\/+/, '')}`
+    return `${resolveShortUrlBase()}/${cleaned.replace(/^\/+/, '')}`
 }
 
 const axiosInstance = axios.create({
-    baseURL: SHORT_URL_BASE_URL,
+    baseURL: resolveShortUrlBase(),
     timeout: 10000,
     withCredentials: true,
 });
