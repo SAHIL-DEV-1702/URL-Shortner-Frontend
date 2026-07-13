@@ -49,17 +49,41 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className="grid gap-5 md:grid-cols-3">
-                {[
-                    { title: 'Instant sharing', description: 'Generate links quickly and copy them for fast sharing.' },
-                    { title: 'Elegant dashboard', description: 'Manage your URLs with a clear layout and easy controls.' },
-                    { title: 'Themed experience', description: 'Switch between light and dark themes anytime.' },
-                ].map((card) => (
-                    <div key={card.title} className="rounded-4xl border border-slate-200/80 bg-(--surface) p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-700/60 dark:bg-slate-900">
-                        <h3 className="text-xl font-semibold text-(--text)">{card.title}</h3>
-                        <p className="mt-3 text-(--muted)">{card.description}</p>
+            <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+                <div className="rounded-4xl border border-slate-200/80 bg-(--surface) p-8 shadow-sm dark:border-slate-700/60 dark:bg-slate-900">
+                    <div className="flex flex-wrap gap-3">
+                        {['Login', 'Logout', 'Dashboard'].map((item) => (
+                            <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-(--text) dark:border-slate-700 dark:bg-slate-950">
+                                {item}
+                            </span>
+                        ))}
                     </div>
-                ))}
+                    <h3 className="mt-6 text-2xl font-semibold text-(--text)">A clean account experience</h3>
+                    <p className="mt-3 text-(--muted)">Sign in or out effortlessly, then jump into your dashboard to create, organize, and manage links with a polished layout.</p>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                        <div className="rounded-3xl border border-slate-200/80 bg-slate-50 p-5 dark:border-slate-700/60 dark:bg-slate-950/80">
+                            <p className="font-semibold text-(--text)">Secure access</p>
+                            <p className="mt-2 text-sm text-(--muted)">Protect your shortcuts with login and logout controls.</p>
+                        </div>
+                        <div className="rounded-3xl border border-slate-200/80 bg-slate-50 p-5 dark:border-slate-700/60 dark:bg-slate-950/80">
+                            <p className="font-semibold text-(--text)">Personal dashboard</p>
+                            <p className="mt-2 text-sm text-(--muted)">Keep created URLs organized in one space for quick reuse.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid gap-5">
+                    {[
+                        { title: 'Instant sharing', description: 'Generate links quickly and copy them for fast sharing.' },
+                        { title: 'Elegant dashboard', description: 'Manage your URLs with a clear layout and easy controls.' },
+                        { title: 'Themed experience', description: 'Switch between light and dark themes anytime.' },
+                    ].map((card) => (
+                        <div key={card.title} className="rounded-4xl border border-slate-200/80 bg-(--surface) p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-700/60 dark:bg-slate-900">
+                            <h3 className="text-xl font-semibold text-(--text)">{card.title}</h3>
+                            <p className="mt-3 text-(--muted)">{card.description}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
         </div>
     )

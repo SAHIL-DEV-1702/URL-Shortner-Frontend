@@ -2,16 +2,16 @@
 
 A modern and responsive frontend for a URL shortening application built with React, Vite, Redux Toolkit, TanStack Router, TanStack Query, and Tailwind CSS.
 
-This project provides a polished user experience for registering, logging in, creating shortened links, and managing them from a dedicated dashboard.
+This project provides a polished experience for creating short links, signing in or registering, and managing your links from a dedicated dashboard.
 
 ## Features
 
-- User authentication with login and registration flows
+- Smooth login and registration flow
 - Protected dashboard access for authenticated users
-- Create and manage shortened URLs
-- View link details and manage existing entries
-- Clean, responsive UI built with Tailwind CSS
-- API integration with a backend service using Axios
+- Create short URLs with optional custom slugs
+- View and manage your saved links from one place
+- Clean, responsive UI with light and dark themes
+- Axios-based API integration with the backend
 
 ## Tech Stack
 
@@ -70,10 +70,21 @@ npm run preview # Preview the production build locally
 npm run lint    # Run ESLint checks
 ```
 
+## Authentication Flow
+
+The app includes a dedicated auth experience for:
+
+- Login
+- Logout
+- Dashboard access
+- Protected URL management
+
+Users can sign in, create links, and return to their dashboard at any time.
+
 ## API Configuration
 
 The frontend communicates with the backend through Axios. The base URL is configured in the Axios instance under the utilities folder. If your backend endpoint changes, update the configuration there.
 
 ## Notes
 
-This frontend is designed to work with a URL shortener backend that supports authentication and URL management endpoints.
+This frontend is designed to work with a URL shortener backend that supports authentication, custom slugs, and URL management endpoints.
